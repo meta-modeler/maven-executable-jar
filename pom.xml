@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pl.edu.pwr.rsi</groupId>
+  <artifactId>maven-hello-world-executable</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<java.version>15</java.version>
+	<maven.compiler.plugin.version>2.5.1</maven.compiler.plugin.version>
+	<maven.assembly.plugin.version>3.3.0</maven.assembly.plugin.version>
+    <os.maven.plugin.version>1.6.2</os.maven.plugin.version>
+  </properties>
+  
+  <build>
+<!--     <extensions> -->
+<!--       <extension> -->
+<!--         <groupId>kr.motd.maven</groupId> -->
+<!--           <artifactId>os-maven-plugin</artifactId> -->
+<!--           <version>${os-maven-plugin}</version> -->
+<!--       </extension> -->
+<!--     </extensions> -->
+  
+    <plugins>
+ 	  <plugin>
+ 		<groupId>org.apache.maven.plugins</groupId>
+ 		<artifactId>maven-compiler-plugin</artifactId>
+ 		<version>${maven.compiler.plugin.version}</version>
+ 		<configuration>
+ 		  <source>${java.version}</source>
+ 		  <target>${java.version}</target>
+ 		  <encoding>${project.build.sourceEncoding}</encoding>
+ 		</configuration>
+ 	  </plugin>
+
+          <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-assembly-plugin</artifactId>
+		    <version>${maven.assembly.plugin.version}</version>
+		    <configuration>
+		      <descriptorRefs>
+			    <descriptorRef>jar-with-dependencies</descriptorRef>
+		      </descriptorRefs>
+		      <archive>
+		      	<manifest>
+		      		<mainClass>pl.edu.pwr.rsi.Main</mainClass>
+		      	</manifest>
+		      </archive>
+	        </configuration>
+		      <executions>
+		      	<execution>
+		      		<id>make-assembly</id>
+		      		<phase>package</phase>
+		      		<goals>
+		      			<goal>single</goal>
+		      		</goals>
+		      	</execution>
+		      </executions>
+	      </plugin>
+ 	  
+    </plugins>
+  </build>
+  
+</project>
