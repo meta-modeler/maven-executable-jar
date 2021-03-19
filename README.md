@@ -1,0 +1,1 @@
+# maven-executable-jar
